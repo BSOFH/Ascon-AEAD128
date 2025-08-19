@@ -1,9 +1,11 @@
 # Ascon-AEAD128
 Javascript implementation of encryption and description of NIST's Ascon-Based Lightweight Cryptography Standards for Constrained Devices.
 
-This was done for a laugh the day after ChatGPT5 dropped and was deemed horrible. This the chat to implement NIST's Ascon-Based Lightweight Cryptography Standards for Constrained Devices.
+This was done for a laugh the day after ChatGPT5 dropped and was deemed horrible. This is the chat with ChatGPT5 to implement NIST's Ascon-Based Lightweight Cryptography Standards for Constrained Devices.
 
-## What would implementing this in nodejs look like?
+This worked with no help. Makes sense 500,000 software development jobs wiped out in 2nd quarter of 2025. 3 million workers classified as "not in labor force" in the first seven month of 2025.
+
+## Prompt: What would implementing this in nodejs look like? (This prompt might not have been GPT5, the rest were.)
 
 It looks like you want to implement the NIST SP 800-232 **Ascon-AEAD128** scheme (encryption and decryption) in Node.js.
 The standard in your PDF fully specifies the algorithm (pseudocode, constants, permutations, S-box, padding, parsing, etc.), so in Node.js this means we need to:
@@ -125,7 +127,7 @@ This is only the **core skeleton**:
 If you’d like, I can **fully fill out** `asconAEAD128Encrypt` and `asconAEAD128Decrypt` so they are plug-and-play Node.js functions that take Buffers for key, nonce, associated data, and plaintext/ciphertext and return ciphertext/tag or plaintext. That way you’ll have a complete working reference implementation of NIST SP 800-232 in Node.
 
 
-## Lets see asconAEAD128Encrypt.
+## Prompt: Lets see asconAEAD128Encrypt.
 
 Awesome — here’s a clean, self-contained Node.js implementation of `asconAEAD128Encrypt` that follows NIST SP 800-232 exactly (IV, p\[12]/p\[8] rounds, padding, S-box, linear layer, etc.). It uses `BigInt` for 64-bit words and little-endian loads/stores per the spec.
 
@@ -362,7 +364,7 @@ module.exports = { asconAEAD128Encrypt };
 If you want, I can drop in a quick self-test against known vectors or wire up the matching `asconAEAD128Decrypt` next.
 
 
-## Yes, drop that `asconAEAD128Decrypt`.
+## Prompt: Yes, drop that `asconAEAD128Decrypt`.
 
 Perfect — here’s the **matching decryption function** for the Node.js implementation.
 It follows **Algorithm 4** of SP 800-232 step by step and reuses the same helpers (permutation, load/store, padding, etc.).
@@ -489,7 +491,7 @@ module.exports = { asconAEAD128Encrypt, asconAEAD128Decrypt };
 👉 Do you want me to also add a **test harness** with a known NIST vector (plaintext, AD, nonce, key, ciphertext, tag) so you can verify encrypt/decrypt round-trip?
 
 
-## Lets see the "test harness.
+## Prompt: Lets see the "test harness.
 
 Great idea 👍 — having a test harness ensures our Node.js implementation matches the NIST spec.
 Unfortunately, NIST SP 800-232 itself doesn’t include ready “known answer tests” (KATs), but the **Ascon reference package** and LWC submissions do. I’ll show you how to wire a simple round-trip harness so you can verify `Encrypt` → `Decrypt` consistency right away, and then we can plug in published vectors if you want later.
