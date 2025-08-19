@@ -1,5 +1,5 @@
 # Ascon-AEAD128
-Javascript implementation of encryption and description of NIST's Ascon-Based Lightweight Cryptography Standards for Constrained Devices.
+Javascript implementation of encryption and decryption of NIST's Ascon-Based Lightweight Cryptography Standards for Constrained Devices.
 
 This was done for a laugh the day after ChatGPT5 dropped and was deemed horrible. This is the chat with ChatGPT5 to implement NIST's Ascon-Based Lightweight Cryptography Standards for Constrained Devices.
 
